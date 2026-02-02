@@ -173,15 +173,7 @@ Based on extensive user research, Xiana addresses these critical scenarios:
 
 ### LiveKit Framework
 
-LiveKit provides the foundation for real-time communication:
-
-```python
-# Agent initialization with multimodal capabilities
-agent = JobContext()
-agent.video = VideoRoomProc()
-agent.audio = AudioRoomProc()
-agent.chat = ChatRoomProc()
-```
+LiveKit provides the foundation for real-time communication.
 
 **Key Features:**
 - WebRTC-based real-time communication
@@ -191,16 +183,7 @@ agent.chat = ChatRoomProc()
 
 ### ANAM Avatar Integration
 
-ANAM provides photorealistic avatar rendering:
-
-```python
-# Avatar initialization with personality
-avatar = AnamPlugin(
-    api_key=os.getenv("ANAM_API_KEY"),
-    personality="professional_assistant",
-    voice="natural_female"
-)
-```
+ANAM provides photorealistic avatar rendering.
 
 **Capabilities:**
 - Real-time lip synchronization
@@ -210,15 +193,7 @@ avatar = AnamPlugin(
 
 ### Microsoft Graph API Integration
 
-Comprehensive M365 access through Graph API:
-
-```python
-# Multi-service integration
-graph = MicrosoftGraphService()
-calendar_data = graph.get_schedule(emails, start_time, end_time)
-mail_data = graph.send_message(recipient, subject, body)
-drive_data = graph.get_drive_items(site_id, drive_id)
-```
+Comprehensive M365 access through Graph API.
 
 **Services Integrated:**
 - Calendar availability checking
@@ -228,14 +203,7 @@ drive_data = graph.get_drive_items(site_id, drive_id)
 
 ### SharePoint RAG System
 
-Intelligent document retrieval bypassing search limitations:
-
-```python
-# Knowledge base-driven retrieval
-rag = SharePointRAGService(user_email)
-results = rag.search_by_keyword("leave policy", limit=5)
-content = rag.get_document_content(site_id, drive_id, item_id)
-```
+Intelligent document retrieval bypassing search limitations.
 
 **Architecture Benefits:**
 - Pre-built knowledge base for fast lookup
@@ -249,17 +217,7 @@ content = rag.get_document_content(site_id, drive_id, item_id)
 
 ### Knowledge Base Construction
 
-The SharePoint RAG system uses a sophisticated indexing approach:
-
-```python
-# Recursive site scanning
-def build_knowledge_base(self):
-    sites = self.graph.get_all_sites()
-    for site in sites:
-        documents = self.scan_site_documents(site)
-        self.index_documents(documents)
-        self.create_keyword_mappings(documents)
-```
+The SharePoint RAG system uses a sophisticated indexing approach.
 
 **Indexing Strategy:**
 - Site hierarchy preservation
@@ -269,23 +227,7 @@ def build_knowledge_base(self):
 
 ### Authentication Flow
 
-Passwordless authentication using Microsoft Authenticator:
-
-```javascript
-// Frontend authentication trigger
-async function authenticateUser() {
-    const authUrl = await fetch('/auth/microsoft');
-    const { url } = await authUrl.json();
-    window.location.href = url;
-}
-
-// Backend token handling
-app.get('/auth/callback', async (req, res) => {
-    const { code } = req.query;
-    const tokens = await microsoftAuth.exchange_code(code);
-    // Store tokens securely
-});
-```
+Passwordless authentication using Microsoft Authenticator.
 
 **Security Features:**
 - OAuth 2.0 PKCE flow
