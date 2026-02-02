@@ -1,402 +1,172 @@
-# Xiana: AI-Powered Enterprise Assistant with SharePoint Integration
-
-## Whitepaper
-
-**Authors:** Xiana Development Team  
-**Date:** February 2026  
-**Version:** 1.0  
-
----
+# Diagramize Toolkit: Bridging Mermaid and PlantUML Diagrams to Draw.io Professional Visualizations
 
 ## Abstract
 
-Xiana represents a groundbreaking approach to enterprise AI assistance, combining cutting-edge avatar technology with comprehensive Microsoft 365 integration. This whitepaper explores how Xiana transforms traditional workplace interactions through seamless authentication, intelligent document retrieval, and natural conversational interfaces. By leveraging Retrieval-Augmented Generation (RAG) with SharePoint content and LiveKit's real-time communication platform, Xiana delivers a secure, efficient, and user-friendly experience that addresses key challenges in modern enterprise environments.
-
----
-
-## Table of Contents
-
-1. [Executive Summary](#executive-summary)
-2. [Introduction](#introduction)
-3. [Problem Statement](#problem-statement)
-4. [Solution Architecture](#solution-architecture)
-5. [Core Technologies](#core-technologies)
-6. [Implementation Details](#implementation-details)
-7. [Security and Authentication](#security-and-authentication)
-8. [Performance and Scalability](#performance-and-scalability)
-9. [Business Benefits](#business-benefits)
-10. [Future Roadmap](#future-roadmap)
-11. [Conclusion](#conclusion)
-12. [References](#references)
-
----
-
-## Executive Summary
-
-In today's digital workplace, employees face increasing complexity in accessing information and coordinating activities across distributed teams. Traditional enterprise systems often require multiple logins, complex navigation, and fragmented communication channels. Xiana addresses these challenges by providing a unified, AI-powered interface that combines:
-
-- **Seamless Authentication**: Passwordless login using Microsoft Authenticator
-- **Intelligent Knowledge Retrieval**: RAG-powered SharePoint document access
-- **Natural Interaction**: Live avatar conversations with real-time responses
-- **Enterprise Integration**: Full Microsoft 365 ecosystem connectivity
-
-This whitepaper demonstrates how Xiana's innovative architecture delivers measurable improvements in productivity, security, and user satisfaction while maintaining enterprise-grade reliability.
-
----
+The Diagramize Toolkit represents a groundbreaking solution in the realm of diagram conversion and visualization. This comprehensive CLI toolkit enables seamless transformation of Mermaid and PlantUML diagram syntax into professional Draw.io XML format, addressing the critical need for high-quality, editable diagram generation in enterprise and development environments. By supporting over 20 diagram types and ensuring pixel-perfect accuracy with automated layout algorithms, the toolkit empowers users to create presentation-ready diagrams efficiently.
 
 ## Introduction
 
-### The Evolution of Enterprise AI
-
-Enterprise AI has evolved from simple chatbots to sophisticated assistants capable of complex tasks. However, most solutions remain constrained by:
-
-- Limited integration with existing enterprise systems
-- Complex authentication requirements
-- Inability to access comprehensive organizational knowledge
-- Poor user experience in real-time interactions
-
-Xiana represents the next generation of enterprise AI assistants, designed specifically for modern organizations using Microsoft 365.
-
-### Project Background
-
-Xiana was developed as an internal solution for 99x, a leading technology company specializing in digital product engineering. The system addresses specific pain points identified in 99x's operations:
-
-- Employee handbook and policy access
-- Meeting coordination across distributed teams
-- Knowledge sharing and document retrieval
-- Secure authentication in shared workspaces
-
-### Key Innovation Areas
-
-1. **Avatar-Based Interaction**: Real-time AI avatar using ANAM technology
-2. **SharePoint RAG Integration**: Direct document access bypassing unreliable search APIs
-3. **Passwordless Authentication**: Seamless Microsoft Authenticator integration
-4. **Multi-Modal Capabilities**: Voice, text, and visual interaction modes
-
----
-
-## Problem Statement
-
-### Current Enterprise Challenges
-
-#### 1. Authentication Complexity
-- Multiple password requirements across systems
-- Frequent re-authentication disrupting workflows
-- Security vs. usability trade-offs
-- Password fatigue and security risks
-
-#### 2. Knowledge Access Barriers
-- SharePoint search API unreliability
-- Document content truncation
-- Complex navigation requirements
-- Time-consuming information retrieval
-
-#### 3. Communication Fragmentation
-- Multiple tools for different functions
-- Context switching overhead
-- Lack of unified interaction models
-- Inefficient meeting coordination
-
-#### 4. User Experience Gaps
-- Text-only interfaces lacking personality
-- No visual presence in interactions
-- Limited real-time capabilities
-- Poor accessibility for non-technical users
-
-### Specific 99x Use Cases
-
-Based on extensive user research, Xiana addresses these critical scenarios:
+In today's fast-paced technological landscape, effective communication through visual diagrams is paramount. Whether in software development, project management, business analysis, or system architecture, diagrams serve as the universal language for conveying complex ideas. However, the fragmentation of diagram tools and formats has long posed challenges for teams seeking consistency, professionalism, and interoperability.
 
-1. **Policy Consultation**: Employees need quick access to HR policies, leave procedures, and company guidelines
-2. **Meeting Scheduling**: Finding optimal times across distributed teams
-3. **Document Retrieval**: Accessing project documentation and knowledge base materials
-4. **Onboarding Support**: New employees requiring comprehensive information access
-
----
+The Diagramize Toolkit emerges as a pivotal innovation, providing a unified bridge between popular text-based diagram languages (Mermaid and PlantUML) and the industry-standard Draw.io format. This whitepaper explores the toolkit's architecture, capabilities, and transformative impact on diagram creation workflows.
 
-## Solution Architecture
+## The Challenge: Diagram Format Fragmentation
 
-### High-Level System Design
+### Current Landscape Issues
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        USER INTERFACE                            │
-├─────────────────────────────────────────────────────────────────┤
-│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐ │
-│  │   Web Browser   │  │   Face Detect  │  │   Auth Flow     │ │
-│  │   (LiveKit)     │  │   (C++/SSE)    │  │   (Microsoft)   │ │
-│  └─────────────────┘  └─────────────────┘  └─────────────────┘ │
-└─────────────────────────────────────────────────────────────────┘
-                                   │
-                                   ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                      XIANA CORE ENGINE                           │
-├─────────────────────────────────────────────────────────────────┤
-│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐ │
-│  │   LiveKit Agent │  │   ANAM Avatar  │  │   OpenAI RT     │ │
-│  │   (Python)      │  │   (Plugin)     │  │   (Realtime)    │ │
-│  └─────────────────┘  └─────────────────┘  └─────────────────┘ │
-└─────────────────────────────────────────────────────────────────┘
-                                   │
-                                   ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                   ENTERPRISE INTEGRATIONS                        │
-├─────────────────────────────────────────────────────────────────┤
-│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐ │
-│  │  SharePoint RAG │  │  Microsoft     │  │   Supabase      │ │
-│  │   (Knowledge    │  │  Graph API     │  │   (RAG)         │ │
-│  │    Base)        │  │                 │  │                 │ │
-│  └─────────────────┘  └─────────────────┘  └─────────────────┘ │
-└─────────────────────────────────────────────────────────────────┘
-```
+1. **Tool Incompatibility**: Organizations often use multiple diagram tools, leading to format inconsistencies and conversion difficulties.
 
-### Component Breakdown
+2. **Manual Layout Efforts**: Text-based diagram languages like Mermaid excel at syntax but lack sophisticated layout algorithms for professional presentations.
 
-#### 1. User Interface Layer
-- **Web Frontend**: React-based interface with LiveKit WebRTC
-- **Face Detection**: C++ server providing real-time user presence detection
-- **Authentication Portal**: Microsoft OAuth integration with passwordless flow
+3. **Quality Disparities**: Generated diagrams frequently require manual adjustments to meet presentation standards.
 
-#### 2. AI Processing Layer
-- **LiveKit Agent**: Python-based agent framework handling real-time communication
-- **ANAM Avatar**: Photorealistic AI avatar for natural interactions
-- **OpenAI Realtime**: Advanced language model for conversational AI
+4. **Workflow Interruptions**: Switching between tools disrupts productivity and introduces version control challenges.
 
-#### 3. Enterprise Integration Layer
-- **SharePoint RAG Service**: Intelligent document retrieval system
-- **Microsoft Graph API**: Comprehensive M365 ecosystem access
-- **Supabase Integration**: Additional knowledge base and vector storage
+5. **Limited Diagram Types**: No single tool supports the breadth of diagram types required across different domains.
 
----
+## Solution Overview: The Diagramize Toolkit
 
-## Core Technologies
+The Diagramize Toolkit addresses these challenges through a modular, CLI-based architecture that converts Mermaid and PlantUML syntax into Draw.io XML format with professional styling and automated layout optimization.
 
-### LiveKit Framework
+### Core Architecture
 
-LiveKit provides the foundation for real-time communication.
+- **Modular Converter Design**: Individual converters for each diagram type ensure specialized handling and optimization.
+- **Layout Engine Integration**: Utilizes Dagre for graph-based layouts and custom algorithms for chart-specific positioning.
+- **XML Generation**: Produces native Draw.io XML with embedded styling and geometry data.
+- **CLI Interface**: Commander.js-based command-line interface for seamless integration into development workflows.
 
-**Key Features:**
-- WebRTC-based real-time communication
-- Plugin architecture for extensibility
-- Multi-room support for scalability
-- Built-in transcription and translation
+### Supported Diagram Types
 
-### ANAM Avatar Integration
+The toolkit supports comprehensive diagram coverage across multiple domains:
 
-ANAM provides photorealistic avatar rendering.
+| Category | Diagram Types | Primary Use Cases |
+|----------|---------------|-------------------|
+| **Flow & Process** | Flowcharts, Sequence Diagrams, User Journey Maps | Process modeling, system interactions |
+| **Organizational** | Org Charts, Mindmaps, Sitemaps | Hierarchy visualization, knowledge mapping |
+| **Project Management** | Gantt Charts, Timelines, Kanban Boards | Scheduling, task management |
+| **Data Visualization** | Bar Charts, Line Charts, Pie Charts, Radar Charts | Analytics, metrics presentation |
+| **Analysis & Strategy** | SWOT Analysis, Quadrant Charts, Fishbone Diagrams | Strategic planning, root cause analysis |
+| **Technical** | Git Graphs, Gitflow Diagrams, Packet Diagrams | Version control, network analysis |
+| **Requirements** | Use Case Diagrams | System specification |
 
-**Capabilities:**
-- Real-time lip synchronization
-- Emotional expression rendering
-- Multi-language support
-- Customizable appearance
+## Technical Implementation
 
-### Microsoft Graph API Integration
+### Conversion Methodology
 
-Comprehensive M365 access through Graph API.
+The toolkit employs multiple conversion strategies optimized for different diagram types:
 
-**Services Integrated:**
-- Calendar availability checking
-- Email composition and sending
-- OneDrive/SharePoint file access
-- User profile and presence information
+1. **Direct Parsing & Layout**: For graph-based diagrams (flowcharts, org charts), the toolkit parses Mermaid syntax, constructs graph structures, and applies Dagre layout algorithms for optimal node positioning.
 
-### SharePoint RAG System
+2. **Geometric Calculation**: Chart-based diagrams (pie, bar, line) use mathematical calculations to determine element positions, sizes, and styling.
 
-Intelligent document retrieval bypassing search limitations.
+3. **Template-Based Generation**: Complex diagrams like Kanban boards and timelines utilize predefined templates with dynamic content insertion.
 
-**Architecture Benefits:**
-- Pre-built knowledge base for fast lookup
-- Direct document navigation
-- Full content extraction (no truncation)
-- Policy-specific indexing
+4. **Hybrid Rendering**: Certain diagram types may combine parsing with rendering techniques for accurate visual representation.
 
----
+### Key Technologies
 
-## Implementation Details
+- **Node.js Runtime**: Cross-platform compatibility and extensive package ecosystem
+- **Dagre Layout Engine**: Professional graph layout algorithms for optimal node positioning
+- **XMLBuilder2**: Efficient XML generation for Draw.io format compliance
+- **Cheerio**: HTML parsing capabilities for advanced diagram processing
+- **Commander.js**: Robust CLI interface with argument parsing and help generation
 
-### Knowledge Base Construction
+### Quality Assurance Features
 
-The SharePoint RAG system uses a sophisticated indexing approach.
+- **Pixel-Perfect Accuracy**: Automated positioning ensures consistent, professional output
+- **Professional Styling**: Pre-configured color schemes, fonts, and spacing
+- **Error Handling**: Comprehensive validation and user-friendly error messages
+- **Extensibility**: Modular design allows for easy addition of new diagram types
 
-**Indexing Strategy:**
-- Site hierarchy preservation
-- Document metadata extraction
-- Keyword-based search indexing
-- Policy document prioritization
+## Benefits and Value Proposition
 
-### Authentication Flow
+### For Individual Users
 
-Passwordless authentication using Microsoft Authenticator.
+1. **Rapid Prototyping**: Convert text descriptions to professional diagrams in seconds
+2. **Consistency**: Standardized styling across all diagram types
+3. **Version Control Friendly**: Text-based input integrates with Git workflows
+4. **Learning Curve**: Leverage existing Mermaid/PlantUML knowledge
 
-**Security Features:**
-- OAuth 2.0 PKCE flow
-- Token refresh automation
-- Session-based token management
-- Admin consent for enterprise permissions
+### For Organizations
 
-### Real-Time Processing Pipeline
+1. **Workflow Efficiency**: Eliminate manual diagram creation bottlenecks
+2. **Brand Compliance**: Consistent visual standards across teams
+3. **Cost Reduction**: Minimize time spent on diagram formatting and adjustments
+4. **Scalability**: Handle large volumes of diagram generation programmatically
 
-End-to-end request processing:
+### For Development Teams
 
-1. **User Detection**: Face detection triggers authentication
-2. **Avatar Activation**: ANAM avatar initializes with user context
-3. **Query Processing**: Natural language understanding
-4. **Knowledge Retrieval**: RAG system queries SharePoint
-5. **Response Generation**: AI generates contextual responses
-6. **Avatar Delivery**: Synchronized speech and animation
+1. **CI/CD Integration**: Automate diagram generation in build pipelines
+2. **Documentation Automation**: Generate diagrams from code comments or configuration files
+3. **API Integration**: Incorporate diagram generation into existing tools and platforms
 
----
+## Use Cases and Applications
 
-## Security and Authentication
+### Software Development
 
-### Passwordless Authentication
+- **Architecture Diagrams**: Automatically generate system architecture visualizations from code analysis
+- **API Documentation**: Create sequence diagrams from API specifications
+- **Git Workflow Visualization**: Generate branching strategies and release timelines
 
-Xiana implements enterprise-grade passwordless authentication:
+### Business Analysis
 
-**Microsoft Authenticator Integration:**
-- Push notification approval
-- Biometric verification (fingerprint/face)
-- Device-based authentication
-- Location and app name display
+- **Process Mapping**: Convert business requirements into flowcharts and swimlane diagrams
+- **Strategic Planning**: Create SWOT and quadrant analysis diagrams for decision-making
+- **Project Management**: Generate Gantt charts and timelines from project data
 
-**Security Benefits:**
-- Eliminates password-related vulnerabilities
-- Reduces phishing attack surface
-- Provides strong multi-factor authentication
-- Maintains audit trails
+### Education and Training
 
-### Enterprise Security Features
+- **Course Materials**: Produce consistent diagrams for educational content
+- **Knowledge Base**: Maintain up-to-date visual documentation
+- **Interactive Learning**: Generate diagrams for coding tutorials and technical training
 
-**Data Protection:**
-- End-to-end encryption for all communications
-- Secure token storage with automatic rotation
-- Compliance with Microsoft 365 security standards
-- GDPR and privacy regulation adherence
+### Data Science and Analytics
 
-**Access Control:**
-- Role-based permissions through Azure AD
-- Granular SharePoint site access
-- Audit logging for all interactions
-- Session timeout and cleanup
+- **Dashboard Creation**: Convert data analysis results into presentation-ready charts
+- **Report Automation**: Generate visual reports from data processing pipelines
+- **Exploratory Analysis**: Create quick visualizations during data exploration phases
 
----
+## Implementation and Adoption
 
-## Performance and Scalability
+### Getting Started
 
-### System Performance Metrics
+1. **Installation**: Simple npm-based global installation
+2. **Configuration**: Minimal setup with sensible defaults
+3. **Integration**: CLI commands integrate with existing workflows
+4. **Customization**: Extensive configuration options for advanced users
 
-Based on production deployment at 99x:
+### Best Practices
 
-- **Response Time**: < 2 seconds for policy queries
-- **Avatar Initialization**: < 3 seconds
-- **Document Retrieval**: < 5 seconds for full content
-- **Concurrent Users**: Support for 50+ simultaneous sessions
+1. **Template Utilization**: Leverage provided templates for consistent results
+2. **Batch Processing**: Use scripts for bulk diagram conversion
+3. **Version Control**: Include diagram source files in repositories
+4. **Quality Review**: Establish review processes for generated diagrams
 
-### Scalability Architecture
+## Future Roadmap and Extensibility
 
-**Horizontal Scaling:**
-- LiveKit cloud infrastructure
-- Distributed knowledge base caching
-- Load-balanced authentication services
-- Microservices-based component design
+The modular architecture positions the Diagramize Toolkit for continuous evolution:
 
-**Resource Optimization:**
-- Knowledge base pre-computation
-- Intelligent caching strategies
-- Background processing for heavy operations
-- Connection pooling for Microsoft Graph API
-
----
-
-## Business Benefits
-
-### Productivity Improvements
-
-**Time Savings:**
-- 75% reduction in policy lookup time
-- 60% faster meeting scheduling
-- 50% decrease in support ticket volume
-- Improved employee onboarding efficiency
-
-### Cost Reduction
-
-**Operational Efficiency:**
-- Reduced IT support overhead
-- Lower training requirements
-- Decreased document search time
-- Improved knowledge worker productivity
-
-### User Experience Enhancement
-
-**Satisfaction Metrics:**
-- 90% user satisfaction rating
-- Intuitive natural language interface
-- Consistent experience across devices
-- Accessibility compliance
-
-### Security and Compliance
-
-**Risk Mitigation:**
-- Enhanced authentication security
-- Audit trail completeness
-- Compliance automation
-- Data protection assurance
-
----
-
-## Future Roadmap
-
-### Planned Enhancements
-
-#### Phase 1: Enhanced Integration (Q2 2026)
-- Teams integration
-- Outlook calendar deep linking
-- Advanced document processing (OCR, table extraction)
-- Multi-language support expansion
-
-#### Phase 2: Advanced AI Capabilities (Q3 2026)
-- Multi-modal input processing
-- Predictive scheduling assistance
-- Advanced analytics and reporting
-- Custom avatar personalities
-
-#### Phase 3: Enterprise Expansion (Q4 2026)
-- Multi-tenant architecture
-- Custom deployment options
-- Advanced security features
-- API ecosystem development
-
-### Research Directions
-
-**Emerging Technologies:**
-- Advanced avatar emotional intelligence
-- Voice biometrics integration
-- Predictive context awareness
-- Quantum-safe encryption
-
----
+- **New Diagram Types**: Easy addition of emerging diagram formats
+- **Enhanced Layouts**: Advanced layout algorithms for complex diagrams
+- **Integration APIs**: RESTful APIs for web application integration
+- **Cloud Deployment**: Serverless options for enterprise deployments
+- **AI Enhancement**: Machine learning for automated diagram optimization
 
 ## Conclusion
 
-Xiana represents a significant advancement in enterprise AI assistance, successfully integrating cutting-edge technologies to solve real-world business challenges. By combining avatar-based interaction, comprehensive Microsoft 365 integration, and intelligent knowledge retrieval, Xiana delivers a solution that enhances productivity while maintaining enterprise-grade security and reliability.
+The Diagramize Toolkit represents a significant advancement in diagram generation technology, bridging the gap between expressive text-based syntax and professional visual output. By providing a comprehensive, extensible solution for diagram conversion, it empowers users across domains to communicate complex ideas more effectively and efficiently.
 
-The system's modular architecture ensures scalability and adaptability to future requirements, positioning Xiana as a foundation for next-generation enterprise AI solutions. The successful deployment at 99x demonstrates the practical viability of this approach and provides a blueprint for similar implementations across industries.
+As organizations increasingly recognize the value of visual communication, tools like the Diagramize Toolkit will play crucial roles in maintaining competitive advantage through improved documentation, faster decision-making, and enhanced collaboration.
 
-As AI continues to evolve, Xiana's emphasis on natural interaction, comprehensive integration, and user-centric design ensures its continued relevance and effectiveness in the modern workplace.
-
----
+The toolkit's open-source nature and modular design ensure it will continue to evolve with the changing needs of the diagram visualization community, serving as a foundation for future innovations in automated diagram generation.
 
 ## References
 
-1. LiveKit Documentation: https://docs.livekit.io/
-2. Microsoft Graph API: https://docs.microsoft.com/en-us/graph/
-3. ANAM Avatar Platform: https://anam.ai/
-4. OpenAI Realtime API: https://platform.openai.com/docs/guides/realtime
-5. SharePoint Online REST API: https://docs.microsoft.com/en-us/sharepoint/dev/apis/rest-api
-6. Microsoft Authenticator: https://www.microsoft.com/en-us/security/blog/2020/08/25/
+1. Mermaid Documentation: https://mermaid.js.org/
+2. PlantUML Documentation: https://plantuml.com/
+3. Draw.io Format Specification: https://www.diagrams.net/doc/
+4. Dagre Layout Library: https://github.com/dagrejs/dagre
 
 ---
 
-*This whitepaper is based on the Xiana project implementation and may be updated as the system evolves. For technical documentation and implementation guides, refer to the project repository.*</content>
-<parameter name="filePath">/Users/disandup/Desktop/xiana-main/Xiana_Whitepaper.md
+
