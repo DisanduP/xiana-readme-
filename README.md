@@ -30,42 +30,6 @@ The SYNTHETIX AI Strategy Agent addresses these challenges through an autonomous
 
 The agent follows a modular pipeline architecture consisting of four interconnected stages:
 
-```mermaid
-graph TD
-    A[Company Input<br/>Name & Industry] --> B[Research Phase]
-    B --> C[Analysis Phase]
-    C --> D[Strategy Generation]
-    D --> E[Reporting Phase]
-
-    subgraph "Research Phase"
-        B1[Query Generation<br/>LLM-driven]
-        B2[Web Search<br/>DuckDuckGo API]
-        B3[Content Scraping<br/>Trafilatura]
-        B4[Data Summarization<br/>Context Optimization]
-    end
-
-    subgraph "Analysis Phase"
-        C1[Company Profiling<br/>Business Model Analysis]
-        C2[Technology Assessment<br/>Tech Stack Evaluation]
-        C3[AI Maturity Scoring<br/>Capability Benchmarking]
-        C4[Market Intelligence<br/>Competitive Analysis]
-    end
-
-    subgraph "Strategy Generation"
-        D1[Opportunity Mapping<br/>Use Case Identification]
-        D2[Feasibility Analysis<br/>Technical Viability]
-        D3[ROI Modeling<br/>Business Case Development]
-        D4[Implementation Planning<br/>Roadmap Creation]
-    end
-
-    subgraph "Reporting Phase"
-        E1[Executive Summary<br/>Key Findings]
-        E2[Visual Diagrams<br/>Mermaid Generation]
-        E3[Markdown Compilation<br/>Structured Content]
-        E4[PDF Export<br/>Professional Formatting]
-    end
-```
-
 ### 2.2 Core Technologies
 
 #### Large Language Models
